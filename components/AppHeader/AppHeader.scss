@@ -1,0 +1,65 @@
+.Header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+    background: #ffffff;
+    z-index: 100;
+    &__content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 935px;
+        margin: 0 auto;
+        &__logo, a {
+            flex: 2;
+            img {
+                margin-top: 5px;
+                cursor: pointer;
+            }
+        }
+        &__search {
+            position: relative;
+            flex: 1.75;
+            input {
+                padding: 10px 30px;
+                border-radius: 5px;
+                margin: 0 auto;
+                border: 1px solid rgba(0, 0, 0, .2);
+                min-width: 270px;
+            }
+            img {
+                position: absolute;
+                left: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 14px;
+                opacity: .6;
+                pointer-events: none;
+            }
+        }
+        &__icons {
+            * {
+                width: 24px;
+                height: 24px;
+                object-fit: cover;
+                margin: 0 10px;
+                cursor: pointer;
+            }
+            a {
+                margin: 0 !important;
+            }
+            img {
+                border-radius: 50%;
+                overflow: visible;
+                &.active {
+                    padding: 1.5px;
+                    transform: scale(1.2);
+                    border: 1px solid #000000;
+                }
+            }
+        }
+    }
+}

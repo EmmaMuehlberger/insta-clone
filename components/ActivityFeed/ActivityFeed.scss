@@ -1,0 +1,53 @@
+.ActivityFeedOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: transparent;
+    z-index: 100;
+    .ActivityFeed {
+        position: relative;
+        position: fixed;
+        top: 60px;
+        right: 10%;
+        right: calc(((100vw - 935px) / 2) - 20px);
+        background: #ffffff;
+        box-shadow: 0 0 5px 1px rgba(0, 0, 0, .0975);
+        border-radius: 5px;
+        z-index: 101;
+        &__arrow {
+            position: absolute;
+            top: -7px;
+            right: 65px;
+            width: 14px;
+            height: 14px;
+            background: #ffffff;
+            transform: rotate(45deg);
+            box-shadow: 0 0 5px 1px rgba(0, 0, 0, .0975);
+            z-index: 0;
+        }
+        &__item {
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 6px 16px;
+            background: #ffffff;
+            text-transform: capitalize;
+            border-radius: inherit;
+            cursor: pointer;
+            z-index: 1;
+            &:focus {
+                background: #c4c4c4;
+            }
+            .AccountWithNoStory {
+                transform: scale(.65);
+            }
+            p {
+                flex: 1;
+                margin: 0 30px 0 10px;
+            }
+        }
+    }
+}

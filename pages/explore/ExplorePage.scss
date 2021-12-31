@@ -1,0 +1,8 @@
+.ExplorePage {
+    padding-bottom: 30px;
+    &__postGrid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+}

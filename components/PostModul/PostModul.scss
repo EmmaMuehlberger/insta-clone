@@ -1,0 +1,27 @@
+.PostModulOverlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000000b9;
+    z-index: 102;
+    .PostModul {
+        background: #ffffff;
+        border-radius: 20px;
+        width: 400px;
+        &__item {
+            padding: 15px 20px;
+            width: 100%;
+            border-bottom: 1px solid rgba(0, 0, 0, .2);
+            text-transform: capitalize;
+            cursor: pointer;
+            &:last-of-type {
+                border-bottom: none;
+            }
+        }
+    }
+}

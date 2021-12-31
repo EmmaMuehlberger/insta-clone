@@ -1,0 +1,249 @@
+.NewPost {
+    &__modul {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        background: #ffffff;
+        border-radius: 20px;
+        width: 500px;
+        height: 545px;
+        &--extraWidth {
+            width: 800px;
+        }
+        &__header {
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 0 20px;
+            border-bottom: 1px solid rgba(0, 0, 0, .2);
+            &__item {
+                &:first-child {
+                    margin-right: auto;
+                }
+                &:last-child {
+                    margin-left: auto;
+                }
+            }
+            svg {
+                cursor: pointer;
+            }
+        }
+        &__content {
+            position: relative;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 500px;
+            border-radius: 0 0 20px 20px;
+            overflow: hidden;
+            &__text {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+            }
+            &__item {
+                position: relative;
+                margin-bottom: 18px;
+                &__fileUpload {
+                    opacity: 0;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    cursor: pointer;
+                }
+            }
+            &__imgContainer {
+                position: relative;
+                display: block;
+                width: 500px;
+                height: 100%;
+                transition: all 200ms ease-in-out;
+                overflow: hidden;
+                margin: 0 auto;
+                &.fourtofive {
+                    width: 400px;
+                }
+                &.sixteentonine {
+                    height: 56%;
+                }
+                img {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: inherit;
+                    margin: auto;
+                    transition: all 200ms ease-in-out;
+                }
+            }
+            &__details {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                width: 300px;
+                height: 100%;
+                margin-left: auto;
+                &__account {
+                    display: flex;
+                    align-items: center;
+                    .AccountWithNoStory {
+                        transform: scale(.55);
+                    }
+                }
+                &__caption {
+                    position: relative;
+                    flex: 1;
+                    padding: 5px 20px;
+                    textarea {
+                        width: 100%;
+                        height: 80%;
+                        border: none;
+                        outline: none;
+                        resize: none;
+                        &:focus {
+                            border: none;
+                            outline: none;
+                        }
+                    }
+                    &__menu {
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        width: 100%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        padding: 14px 20px;
+                    }
+                }
+                &__meta {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding: 14px 20px;
+                    border-top: 1px solid rgba(0, 0, 0, .2);
+                    input {
+                        border: none;
+                        outline: none;
+                    }
+                }
+            }
+            h2 {
+                font-weight: 100;
+            }
+        }
+        &__buttons {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            button {
+                margin: 5px;
+                &:last-child {
+                    margin-left: auto;
+                }
+            }
+        }
+        &__aspectMenu {
+            position: absolute;
+            bottom: 80px;
+            left: 20px;
+            display: flex;
+            flex-direction: column;
+            border-radius: 20px;
+            background: rgba(26,26,26,.8);
+            &__item {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 12px 16px;
+                border-bottom: 2px solid rgba(255, 255, 255, .2);
+                width: 120px;
+                overflow: hidden;
+                cursor: pointer;
+                &:last-of-type {
+                    border-bottom: none;
+                }
+                p {
+                    color: #ffffff;
+                    opacity: .3;
+                    pointer-events: none;
+                }
+                svg {
+                    pointer-events: none;
+                }
+            }
+        }
+        &__zoomMenu {
+            position: absolute;
+            bottom: 80px;
+            left: 65px;
+            display: flex;
+            align-items: center;
+            flex-direction: center;
+            border-radius: 20px;
+            background: rgba(26,26,26,.8);
+            padding: 10px 10px 15px;
+        }
+        &__galleryMenu {
+            position: absolute;
+            bottom: 80px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            flex-direction: space-between;
+            border-radius: 20px;
+            background: rgba(26,26,26,.8);
+            padding: 14px;
+            height: 110px;
+            &__item {
+                &__imgContainer {
+                    position: relative;
+                    width: 80px;
+                    height: 80px;
+                    overflow: hidden;
+                    &.fourtofive {
+                        width: 64px;
+                    }
+                    &.sixteentonine {
+                        height: 44.8px;
+                    }
+                    img {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                    button {
+                        position: absolute;
+                        top: 3px;
+                        right: 3px;
+                        width: 20px;
+                        height: 20px;
+                        padding: 5px !important;
+                    }
+                }
+            }
+            &__btn {
+                transform: scale(1.4);
+                margin: 0 7px 0 25px;
+                border: 1px solid #ffffff !important;
+            }
+        }
+    }
+}

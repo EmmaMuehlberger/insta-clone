@@ -1,0 +1,15 @@
+.RecommendedUser {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .AccountWithNoStory {
+        transform: scale(.65);
+        margin-top: 3px;
+    }
+    &__name {
+        flex: 1;
+    }
+    p {
+        cursor: pointer;
+    }
+}

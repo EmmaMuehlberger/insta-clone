@@ -1,0 +1,27 @@
+.StoryList {
+    position: relative;
+    grid-area: stories;
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 5px;
+    padding: 15px;
+    overflow-x: hidden;
+    &__container {
+        margin: 0 3px;
+        max-width: 100%;
+    }
+    &__arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 20px;
+        width: 30px;
+        height: 30px;
+        background-image: url("https://www.instagram.com/static/bundles/es6/sprite_core_32f0a4f27407.png/32f0a4f27407.png");
+        background-position: -162px -98px;
+        background-repeat: no-repeat;
+        box-align: stretch;
+        cursor: pointer;
+    }
+}
