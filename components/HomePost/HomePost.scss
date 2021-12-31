@@ -55,7 +55,7 @@
         }
     }
     &__footer {
-        padding: 15px;
+        padding: 15px 15px 0;
         &__icons {
             display: flex;
             align-items: center;
@@ -97,6 +97,16 @@
         p:last-of-type {
             margin-top: 5px;
         }
+    }
+    &__commentSection {
+        padding: 0 15px 15px;
+        p {
+            margin: 4px 0;
+            &:last-of-type {
+                margin-top: 13px;
+            }
+        }
+        
     }
     &__comment {
         display: flex;

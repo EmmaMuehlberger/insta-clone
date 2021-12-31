@@ -29,7 +29,10 @@
 			</div>
 			<p class="HomePost__footer__likes">Liked {{post.likes}} times</p>
 			<p class="HomePost__footer__caption"><span class="HomePost__footer__caption__username">{{user.name}}</span> {{post.caption.slice(0, 70)}}<span v-if="post.caption.length > 70">......<span class="light"> mehr</span></span></p>
-			<p class="grey extraSmall upper">12 minutes ago</p>
+		</div>
+		<div class="HomePost__commentSection">
+			<p v-for="(comment, index) in post.comments.slice().reverse().slice(0, 2).reverse()" :key="index"><strong class="bold">{{getUser(comment.user).name}}</strong> {{comment.comment}}</p>
+			<p class="grey extraSmall upper">{{post.timesince}}</p>
 		</div>
 		<div class="HomePost__comment">
 			<svg aria-label="Emoji" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><path d="M15.83 10.997a1.167 1.167 0 101.167 1.167 1.167 1.167 0 00-1.167-1.167zm-6.5 1.167a1.167 1.167 0 10-1.166 1.167 1.167 1.167 0 001.166-1.167zm5.163 3.24a3.406 3.406 0 01-4.982.007 1 1 0 10-1.557 1.256 5.397 5.397 0 008.09 0 1 1 0 00-1.55-1.263zM12 .503a11.5 11.5 0 1011.5 11.5A11.513 11.513 0 0012 .503zm0 21a9.5 9.5 0 119.5-9.5 9.51 9.51 0 01-9.5 9.5z"></path></svg>
@@ -89,6 +92,9 @@ export default {
 			this.$store.commit("unlikePost", Number(this.post.id));
 			this.$store.commit("decrementLikes", Number(this.post.id));
 			this.liked = this.currentUser ? this.currentUser.likes.includes(Number(this.post.id)) : false;
+		},
+		getUser(id) {
+			return this.$store.getters.getSingleUser(id)[0];
 		},
 		postComment() {
 			if(this.commentInput.length > 0) {
