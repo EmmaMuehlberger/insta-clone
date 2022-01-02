@@ -28,7 +28,8 @@
 				<svg aria-label="Save post" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><polygon fill="none" points="20 21 12 13.44 4 21 4 3 20 3 20 21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></polygon></svg>
 			</div>
 			<p class="HomePost__footer__likes">Liked {{post.likes}} times</p>
-			<p class="HomePost__footer__caption"><span class="HomePost__footer__caption__username">{{user.name}}</span> {{post.caption.slice(0, 70)}}<span v-if="post.caption.length > 70">......<span class="light"> mehr</span></span></p>
+			<p v-if="showFullCaption" class="HomePost__footer__caption"><span class="HomePost__footer__caption__username">{{user.name}}</span> {{post.caption}}<span class="light" @click="toggleFullCaption"> Less</span></p>
+			<p v-else class="HomePost__footer__caption"><span class="HomePost__footer__caption__username">{{user.name}}</span> {{post.caption.slice(0, 70)}}<span v-if="post.caption.length > 70">......<span class="light" @click="toggleFullCaption"> More</span></span></p>
 		</div>
 		<div class="HomePost__commentSection">
 			<p v-for="(comment, index) in post.comments.slice().reverse().slice(0, 2).reverse()" :key="index"><strong class="bold">{{getUser(comment.user).name}}</strong> {{comment.comment}}</p>
@@ -54,14 +55,15 @@ export default {
         user: {
 			type: Object,
 			default: () => {}
-		}
+		},
     },
 	data() {
 		return {
 			currentImgIndex: 0,
 			currentUser: null,
 			liked: false,
-			commentInput: ""
+			commentInput: "",
+			showFullCaption: false
 		}
 	},
 	created() {
@@ -101,7 +103,10 @@ export default {
 				this.$store.commit("addComment", {postId: this.post.id, content: this.commentInput});
 				this.commentInput = "";
 			}
-		}
+		},
+		toggleFullCaption() {
+			this.showFullCaption = !this.showFullCaption;
+		},
 	}
 }
 </script>

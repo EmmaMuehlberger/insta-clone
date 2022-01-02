@@ -5,7 +5,8 @@ const state = () => ({
         img: "profile-pic.jpg",
         follows: [1, 2, 3],
         likes: [],
-        story: false
+        story: {},
+        watchedStories: []
     },
     users: [
         {
@@ -14,7 +15,7 @@ const state = () => ({
             fullname: "Emma Mühlberger",
             img: "profile-pic.jpg",
             bio: "",
-            story: false
+            story: {},
         },
         {
             id: 1,
@@ -22,7 +23,7 @@ const state = () => ({
             fullname: "Tutku Öztoygan",
             img: "profile-pic1.jpg",
             bio: "One life. One world. Explore it as much as you can. ✨✈️🌎",
-            story: true
+            story: {images: ["post28.jpg","post34.jpg"], time: "2h"}
         },
         {
             id: 2,
@@ -30,7 +31,7 @@ const state = () => ({
             fullname: "Marie Regenberg",
             img: "profile-pic3.jpg",
             bio: "| Berlin | '99  | MD-PhD |",
-            story: true
+            story: {images: ["post27.jpg"], time: "14h"}
         },
         {
             id: 3,
@@ -38,7 +39,7 @@ const state = () => ({
             fullname: "Ahu Azarina",
             img: "profile-pic2.jpg",
             bio: "🇩🇪 🇮🇷",
-            story: true
+            story: {images: ["post29.jpg"], time: "23h"}
         },
         {
             id: 4,
@@ -46,7 +47,7 @@ const state = () => ({
             fullname: "Maximilian Pretz",
             img: "profile-pic4.jpeg",
             bio: "LMU | '94 | 🏂🎓",
-            story: false
+            story: {}
         },
         {
             id: 5,
@@ -54,7 +55,7 @@ const state = () => ({
             fullname: "Kiran B",
             img: "",
             bio: "",
-            story: false
+            story: {}
         },
         {
             id: 6,
@@ -62,7 +63,7 @@ const state = () => ({
             fullname: "Tom Jonas Johanson",
             img: "profile-pic6.webp",
             bio: "Travel | Vanlife | Gratitude",
-            story: true
+            story: {images: ["post27.jpg"], time: "23h"}
         },
         {
             id: 7,
@@ -70,7 +71,7 @@ const state = () => ({
             fullname: "Ali W",
             img: "profile-pic7.jpeg",
             bio: "",
-            story: false
+            story: {}
         },
         {
             
@@ -79,7 +80,7 @@ const state = () => ({
             fullname: "Laura Rodriguez",
             img: "profile-pic8.webp",
             bio: "fashion travel lifestyle 👠✈️",
-            story: true
+            story: {images: ["post27.jpg"], time: "14h"}
         },
         {
             
@@ -88,7 +89,7 @@ const state = () => ({
             fullname: "Memes",
             img: "profile-pic9.png",
             bio: "😂 Funny Memes 😄 Funny Videos 😎 Most relatable page on the gram #memes #memefan #memelover #memiverse",
-            story: true
+            story: {images: ["post22.jpg"], time: "23h"}
         },
     ],
     posts: [
@@ -290,7 +291,7 @@ const state = () => ({
             location: "",
             timesince: "6 days ago",
             caption: "Lorem ipsum dolor sit. Corporis sequi nisi sapiente amet atque blanditiis. Lorem ipsum dolor sit. Corporis sequi nisi sapiente amet atque blanditiis. Lorem ipsum dolor sit. Corporis sequi nisi sapiente amet atque blanditiis.......",
-            comments: []
+            comments: [{user: 7, comment: "wij 🙈😂😂", time: "5d"}, {user: 5, comment: "😂😂😂😂😂😂😂", time: "4d"}]
         },
         {
             id: 20,
@@ -379,7 +380,20 @@ const state = () => ({
 const getters = {
     // Stories
     getStories: (state) => {
-        return state.users.filter(user => state.currentUser.follows.includes(user.id) && user.story);
+        const users = [];
+        const tempUsers = state.users.filter(user => state.currentUser.follows.includes(user.id) && user.story.images.length > 0);
+        tempUsers.forEach(user => {
+            if(state.currentUser.watchedStories.includes(user.id)) {
+                users.push([user, true]);
+                return;
+            }
+            users.push([user, false]);
+        });
+        users.sort(function(a,b){return a[1]-b[1]});
+        return users;
+    },
+    getStoriesByUser: (state) => (userId) => {
+        return state.users.filter(user => user.id.toString() === userId.toString() && user.story.images.length > 0);
     },
 
     // Posts
@@ -458,6 +472,11 @@ const mutations = {
     // Comments
     addComment(state, { postId, content }) {
         state.posts[postId].comments.push({user: state.currentUser.id, comment: content, time: "1m"});
+    },
+
+    // Stories
+    addWatchedStory(state, userId) {
+        state.currentUser.watchedStories = [...state.currentUser.watchedStories, userId];
     }
 }
 

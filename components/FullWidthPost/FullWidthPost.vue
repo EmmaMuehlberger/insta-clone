@@ -15,7 +15,8 @@
 							<p class="bold">{{user.name}}</p>
 						</nuxt-link>
 						<span>•</span>
-						<p class="action" v-on="currentUser.follows.includes(Number(user.id)) ? {click: unfollowUser} : {click: followUser}">{{currentUser.follows.includes(Number(user.id)) ? 'Unfollow' : 'Follow'}}</p>
+						<p v-if="currentUser.follows.includes(Number(user.id))" class="greyAction" @click="unfollowUser">Following</p>
+						<p v-else class="action" @click="followUser">Follow</p>
 						<p class="verySmall grey">{{post.location}}</p>
 					</div>
 					<svg aria-label="More Options" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24" @click="showOptions"><circle cx="12" cy="12" r="1.5"></circle><circle cx="6" cy="12" r="1.5"></circle><circle cx="18" cy="12" r="1.5"></circle></svg>

@@ -1,6 +1,6 @@
 <template>
-	<div class="AccountWithStory">
-		<img :src="require(`@/assets/img/${img ? img : 'avatar-placeholder.png'}`)" :alt="alt">
+	<div class="AccountWithStory" :class="{watched: watched}">
+		<img :src="require(`@/assets/img/${img ? img : 'avatar-placeholder.png'}`)" :alt="alt" >
 	</div>
 </template>
 
@@ -14,6 +14,10 @@ export default {
 		alt: {
             type: String,
             default: ""
+        },
+        watched: {
+            type: Boolean,
+            default: false
         }
     }	
 }

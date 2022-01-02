@@ -1,0 +1,113 @@
+.StoryPage {
+    width: 100vw;
+    height: 100vh;
+    background: #1a1a1a;
+    color: #ffffff !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        position: relative;
+        width: 400px;
+        height: 95%;
+        border-radius: 10px;
+        overflow: hidden;
+        &__background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, .15);
+            background-blend-mode: darken;
+            background-size: cover;
+            background-position: center; 
+            filter: blur(50px);
+            width: 110%;
+            height: 110%;
+        }
+        &__header {
+            position: relative;
+            padding: 15px;
+            &__progressBar {
+                position: relative;
+                display: flex;
+                align-items: center;
+                margin-top: 10px;
+                border-radius: 10px;
+                &__container {
+                    position: relative;
+                    width: 100%;
+                    height: 2px;
+                    margin: 0 1px;
+                    &__complete {
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(255, 255, 255, .35);
+                        border-radius: inherit;
+                    }
+                    &__current {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        height: 100%;
+                        background: rgb(255, 255, 255);
+                        border-radius: inherit;
+                        transition: width 50ms linear;
+                    }
+                }
+            }
+            &__content {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-top: 10px;
+                .AccountWithNoStory {
+                    transform: scale(.75);
+                }
+                &__user, &__icons {
+                    display: flex;
+                    align-items: center;
+                    h1, p {
+                        color: #ffffff;
+                    }
+                    svg, p {
+                        margin-left: 15px;
+                    }
+                    svg {
+                        cursor: pointer;
+                    }
+                    p {
+                        opacity: .6;
+                    }
+                }
+            }
+        }
+        &__mainImg {
+            position: relative;
+            width: 100%;
+            object-fit: contain;
+            display: block;
+            margin: auto;
+        }
+        &__comment {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            input {
+                padding: 12px 20px;
+                border-radius: 30px;
+                border: 1px solid #ffffff;
+                background: none;
+                color: #ffffff;
+                width: 90%;
+            }
+            ::placeholder {
+                opacity: 1;
+            }
+        }
+    }
+}

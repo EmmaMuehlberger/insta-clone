@@ -63,6 +63,12 @@ body {
     cursor: pointer;
 }
 
+.greyAction {
+    font-weight: 500;
+    font-size: 13px;
+    cursor: pointer;
+}
+
 .alert {
     color: rgb(237,73,86);
 }
@@ -161,6 +167,12 @@ body {
     &--wide {
         width: 82px;
     }
+}
+
+/* Inputs */
+
+input:focus {
+    outline: none;
 }
 
 /* Range Slider */
