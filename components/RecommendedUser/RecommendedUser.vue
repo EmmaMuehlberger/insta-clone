@@ -1,6 +1,6 @@
 <template>
     <div class="RecommendedUser">
-		<AccountWithNoStory :img="img" :alt="name" />
+		<AccountWithNoStory :id="userId" :img="img" :alt="name" />
 		<div class="RecommendedUser__name">
 			<nuxt-link :to="`/user/${userId}`">	
 				<p class="bold small">{{name}}</p>

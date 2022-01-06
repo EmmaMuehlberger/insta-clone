@@ -13,9 +13,9 @@
 				</div>
 				<div class="StoryPage__container__header__content">
 					<div class="StoryPage__container__header__content__user">
-						<AccountWithNoStory :img="user.img" :alt="`${user.name}'s profile pic`" />
+						<AccountWithNoStory :id="user.id.toString()" :img="user.img" :alt="`${user.name}'s profile pic`" />
 						<h1 class="bold smallMedium">{{user.name}}</h1>
-						<p class="smallMedium bold">1h</p>
+						<p class="smallMedium bold">{{stories.time}}</p>
 					</div>
 					<div class="StoryPage__container__header__content__icons">
 						<svg v-if="playing" aria-label="Pause" color="#ffffff" fill="#ffffff" height="16" role="img" viewBox="0 0 48 48" width="16" @click="stopCountDown"><path d="M15 1c-3.3 0-6 1.3-6 3v40c0 1.7 2.7 3 6 3s6-1.3 6-3V4c0-1.7-2.7-3-6-3zm18 0c-3.3 0-6 1.3-6 3v40c0 1.7 2.7 3 6 3s6-1.3 6-3V4c0-1.7-2.7-3-6-3z"></path></svg>

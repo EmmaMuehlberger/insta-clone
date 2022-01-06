@@ -1,6 +1,6 @@
 <template>
     <div class="Story">
-        <AccountWithStory :img="storyImg" :alt="storyName" :watched="watched" />
+        <AccountWithStory :id="userId" :img="storyImg" :alt="storyName" :watched="watched" />
         <p class="verySmall">{{storyName.slice(0, 10)}}<span v-if="storyName.length > 10">...</span></p>
     </div>
 </template>
@@ -8,6 +8,10 @@
 <script>
 export default {
     props: {
+        userId: {
+            type: String,
+            default: ""
+        }, 
         storyName: {
             type: String,
             default: ""

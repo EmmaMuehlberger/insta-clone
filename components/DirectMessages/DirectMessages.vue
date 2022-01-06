@@ -7,21 +7,21 @@
 				<svg aria-label="new message" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><path d="M12.202 3.203H5.25a3 3 0 00-3 3V18.75a3 3 0 003 3h12.547a3 3 0 003-3v-6.952" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><path d="M10.002 17.226H6.774v-3.228L18.607 2.165a1.417 1.417 0 012.004 0l1.224 1.225a1.417 1.417 0 010 2.004z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="16.848" x2="20.076" y1="3.924" y2="7.153"></line></svg>
 			</div>
 			<div class="DirectMessages__persons__person DirectMessages__persons__person--active">
-				<AccountWithNoStory img="profile-pic1.jpg" alt="user profile pic" />
+				<AccountWithNoStory id="1" img="profile-pic1.jpg" alt="user profile pic" />
 				<div class="DirectMessages__persons__person__info">
 					<h5 class="smallMedium">Tutku Öztoygan</h5>
 					<p class="smallMedium grey">Active 2 minutes ago</p>
 				</div>
 			</div>
 			<div class="DirectMessages__persons__person">
-				<AccountWithNoStory img="profile-pic2.jpg" alt="user profile pic" />
+				<AccountWithNoStory id="2" img="profile-pic2.jpg" alt="user profile pic" />
 				<div class="DirectMessages__persons__person__info">
 					<h5 class="smallMedium">Ahu Azarina</h5>
 					<p class="smallMedium grey">Active 1 day ago</p>
 				</div>
 			</div>
 			<div class="DirectMessages__persons__person">
-				<AccountWithNoStory img="profile-pic3.jpg" alt="user profile pic" />
+				<AccountWithNoStory id="3" img="profile-pic3.jpg" alt="user profile pic" />
 				<div class="DirectMessages__chat__header__info">
 					<h5 class="smallMedium">Marie Regenberg</h5>
 					<p class="smallMedium grey">Active 4 hours ago</p>
@@ -30,7 +30,7 @@
 		</div>
 		<div class="DirectMessages__chat">
 			<div class="DirectMessages__chat__header">
-				<AccountWithNoStory img="profile-pic1.jpg" alt="user profile pic" />
+				<AccountWithNoStory id="1" img="profile-pic1.jpg" alt="user profile pic" />
 				<div class="DirectMessages__chat__header__info">
 					<h2 class="medium bold">Tutku Öztoygan</h2>
 					<p class="verySmall grey">Active 2 minutes ago</p>
@@ -39,11 +39,11 @@
 			</div>
 			<div class="DirectMessages__chat__messages">
 				<div class="DirectMessages__chat__messages__message DirectMessages__chat__messages__message--other">
-					<AccountWithNoStory img="profile-pic1.jpg" alt="user profile pic" />
+					<AccountWithNoStory id="1" img="profile-pic1.jpg" alt="user profile pic" />
 					<p>HAhahaha yesssss</p>
 				</div>
 				<div class="DirectMessages__chat__messages__message DirectMessages__chat__messages__message--me">
-					<AccountWithNoStory img="profile-pic.jpg" alt="user profile pic" />
+					<AccountWithNoStory id="0" img="profile-pic.jpg" alt="user profile pic" />
 					<p>😂😂😂😂😂</p>
 				</div>
 			</div>

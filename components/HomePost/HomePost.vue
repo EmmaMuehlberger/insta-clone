@@ -1,8 +1,8 @@
 <template>
 	<div class="HomePost">
 		<div class="HomePost__header">
-			<AccountWithStory v-if="user.story" :img="user.img" :alt="user.name" />
-			<AccountWithNoStory v-else :img="user.img" :alt="user.name" />
+			<AccountWithStory v-if="user.story.images.length > 0" :id="user.id.toString()" :img="user.img" :alt="user.name" />
+			<AccountWithNoStory v-else :id="user.id.toString()" :img="user.img" :alt="user.name" />
 			<nuxt-link :to="`/user/${user.id}`">
 				<p class="bold">{{user.name}}</p>
 				<p class="verySmall grey">{{post.location}}</p>

@@ -1,7 +1,7 @@
 <template>
 	<div class="SideBar">
 		<div class="SideBar__personalAccount">
-			<AccountWithNoStory :img="currentUser.img" :alt="currentUser.name" />
+			<AccountWithNoStory :id="currentUser.id.toString()" :img="currentUser.img" :alt="currentUser.name" />
 			<div class="SideBar__personalAccount__name">
 				<nuxt-link :to="`/user/${currentUser.id}`">
 					<p class="bold">{{currentUser.name}}</p>

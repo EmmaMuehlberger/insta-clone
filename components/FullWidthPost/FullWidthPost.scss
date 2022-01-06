@@ -66,7 +66,8 @@
                 display: flex;
                 align-items: center;
                 padding: 8px 20px 3px;
-                .AccountWithNoStory {
+                .AccountWithNoStory,
+                .AccountWithStory {
                     transform: scale(.55);
                     margin-left: -15px;
                 }
@@ -104,6 +105,7 @@
                     margin-bottom: 20px;
                     p:first-of-type {
                         grid-area: comment;
+                        word-wrap: break-word;
                     }
                     p:last-of-type {
                         grid-area: date;

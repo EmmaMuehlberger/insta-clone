@@ -5,7 +5,7 @@ const state = () => ({
         img: "profile-pic.jpg",
         follows: [1, 2, 3],
         likes: [],
-        story: {},
+        story: {images: [], time: ""},
         watchedStories: []
     },
     users: [
@@ -15,7 +15,7 @@ const state = () => ({
             fullname: "Emma Mühlberger",
             img: "profile-pic.jpg",
             bio: "",
-            story: {},
+            story: {images: [], time: ""},
         },
         {
             id: 1,
@@ -31,7 +31,7 @@ const state = () => ({
             fullname: "Marie Regenberg",
             img: "profile-pic3.jpg",
             bio: "| Berlin | '99  | MD-PhD |",
-            story: {images: ["post27.jpg"], time: "14h"}
+            story: {images: ["post39.jpg"], time: "14h"}
         },
         {
             id: 3,
@@ -39,7 +39,7 @@ const state = () => ({
             fullname: "Ahu Azarina",
             img: "profile-pic2.jpg",
             bio: "🇩🇪 🇮🇷",
-            story: {images: ["post29.jpg"], time: "23h"}
+            story: {images: ["post38.jpg"], time: "23h"}
         },
         {
             id: 4,
@@ -47,7 +47,7 @@ const state = () => ({
             fullname: "Maximilian Pretz",
             img: "profile-pic4.jpeg",
             bio: "LMU | '94 | 🏂🎓",
-            story: {}
+            story: {images: [], time: ""}
         },
         {
             id: 5,
@@ -55,7 +55,7 @@ const state = () => ({
             fullname: "Kiran B",
             img: "",
             bio: "",
-            story: {}
+            story: {images: [], time: ""}
         },
         {
             id: 6,
@@ -63,7 +63,7 @@ const state = () => ({
             fullname: "Tom Jonas Johanson",
             img: "profile-pic6.webp",
             bio: "Travel | Vanlife | Gratitude",
-            story: {images: ["post27.jpg"], time: "23h"}
+            story: {images: ["post24.jpg"], time: "23h"}
         },
         {
             id: 7,
@@ -71,7 +71,7 @@ const state = () => ({
             fullname: "Ali W",
             img: "profile-pic7.jpeg",
             bio: "",
-            story: {}
+            story: {images: [], time: ""}
         },
         {
             
@@ -89,7 +89,7 @@ const state = () => ({
             fullname: "Memes",
             img: "profile-pic9.png",
             bio: "😂 Funny Memes 😄 Funny Videos 😎 Most relatable page on the gram #memes #memefan #memelover #memiverse",
-            story: {images: ["post22.jpg"], time: "23h"}
+            story: {images: ["post22.jpg", "post41.webp", "post23.jpg"], time: "23h"}
         },
     ],
     posts: [
@@ -476,7 +476,7 @@ const mutations = {
 
     // Stories
     addWatchedStory(state, userId) {
-        state.currentUser.watchedStories = [...state.currentUser.watchedStories, userId];
+        state.currentUser.watchedStories = !state.currentUser.watchedStories.includes(userId) ? [...state.currentUser.watchedStories, userId] : state.currentUser.watchedStories;
     }
 }
 

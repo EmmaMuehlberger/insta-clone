@@ -1,12 +1,18 @@
 <template>
 	<div class="AccountWithStory" :class="{watched: watched}">
-		<img :src="require(`@/assets/img/${img ? img : 'avatar-placeholder.png'}`)" :alt="alt" >
+        <nuxt-link :to="`/stories/${id}`">
+		    <img :src="require(`@/assets/img/${img ? img : 'avatar-placeholder.png'}`)" :alt="alt" >
+        </nuxt-link>
 	</div>
 </template>
 
 <script>
 export default {
 	props: { 
+        id: {
+            type: String,
+            default: ""
+        }, 
         img: {
             type: String,
             default: ""

@@ -9,7 +9,8 @@
 			</div>
 			<div class="FullWidthPost__content">
 				<div class="FullWidthPost__content__header">
-					<AccountWithNoStory :img="user.img" :alt="user.name" />
+					<AccountWithStory v-if="user.story.images.length > 0" :id="user.id.toString()" :img="user.img" :alt="user.name" />
+					<AccountWithNoStory v-else :id="user.id.toString()" :img="user.img" :alt="user.name" />
 					<div class="FullWidthPost__content__header__info">
 						<nuxt-link :to="`/user/${user.id}`">
 							<p class="bold">{{user.name}}</p>
@@ -23,12 +24,12 @@
 				</div>
 				<div class="FullWidthPost__content__commentSection">
 					<div v-if="post.caption.length > 0" class="FullWidthPost__content__commentSection__comment">
-						<AccountWithNoStory :img="user.img" :alt="user.name" />
+						<AccountWithNoStory :id="user.id.toString()" :img="user.img" :alt="user.name" />
 						<p>{{post.caption}}</p>
 						<p class="grey extraSmall upper">{{post.timesince.slice(0, 3).replace(/\s/g, "")}}</p>
 					</div>
 					<div v-for="(comment, index) in post.comments" :key="index" class="FullWidthPost__content__commentSection__comment">
-						<AccountWithNoStory :img="getUser(comment.user).img" alt="comment author" />
+						<AccountWithNoStory :id="user.id.toString()" :img="getUser(comment.user).img" alt="comment author" />
 						<p>{{comment.comment}}</p>
 						<p class="grey extraSmall upper">{{comment.time}}</p>
 					</div>
