@@ -395,6 +395,12 @@ const getters = {
     getStoriesByUser: (state) => (userId) => {
         return state.users.filter(user => user.id.toString() === userId.toString() && user.story.images.length > 0);
     },
+    getPrevAndNextStory: (state) => (currentStory) => {
+        const currentStoryIndex = state.currentUser.follows.indexOf(currentStory);
+        const prevStory = currentStoryIndex > 0 ? state.currentUser.follows[currentStoryIndex - 1] : state.currentUser.follows[state.currentUser.follows.length - 1];
+        const nextStory = currentStoryIndex < state.currentUser.follows.length - 1 ? state.currentUser.follows[currentStoryIndex + 1] : state.currentUser.follows[0];
+        return  [prevStory, nextStory];
+    },
 
     // Posts
     getPosts: (state) => {

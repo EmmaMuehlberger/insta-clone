@@ -6,6 +6,31 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    &__previewContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        width: 180px;
+        height: 300px;
+        border-radius: 10px;
+        overflow: hidden;
+        margin: 0 100px;
+        &__preview {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 110%;
+            height: 110%;
+            background-size: cover;
+            background-position: center; 
+            filter: blur(50px);
+        }
+        .AccountWithNoStory {
+            position: relative;
+        }
+    }
     &__container {
         display: flex;
         justify-content: space-between;

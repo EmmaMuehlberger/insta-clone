@@ -1,5 +1,9 @@
 <template>
 	<div class="Page StoryPage">
+		<nuxt-link v-if="prevUser" :to="`/stories/${prevUser.id}`" class="StoryPage__previewContainer">
+			<div class="StoryPage__previewContainer__preview" :style="{backgroundImage: `url(${require(`@/assets/img/${prevUser.img}`)})`}"></div>
+			<AccountWithNoStory :img="prevUser.img" :alt="`${prevUser.name}s profile pic`" />
+		</nuxt-link>
 		<div class="StoryPage__container">
 			<div class="StoryPage__container__background" :style="{backgroundImage: `url(${require(`@/assets/img/${stories.images[currentStoryIndex]}`)})`}"></div>
 			<div class="StoryPage__container__header">
@@ -31,6 +35,10 @@
 				<svg aria-label="Direct" color="#dbdbdb" fill="#dbdbdb" height="24" role="img" viewBox="0 0 24 24" width="24"><line fill="none" stroke="#ffffff" stroke-linejoin="round" stroke-width="2" x1="22" x2="9.218" y1="3" y2="10.083"></line><polygon fill="none" points="11.698 20.334 22 3.001 2 3.001 9.218 10.084 11.698 20.334" stroke="#ffffff" stroke-linejoin="round" stroke-width="2"></polygon></svg>
 			</div>
 		</div>
+		<nuxt-link v-if="nextUser" :to="`/stories/${nextUser.id}`" class="StoryPage__previewContainer">
+			<div class="StoryPage__previewContainer__preview" :style="{backgroundImage: `url(${require(`@/assets/img/${nextUser.img}`)})`}"></div>
+			<AccountWithNoStory :img="nextUser.img" :alt="`${nextUser.name}s profile pic`" />
+		</nuxt-link>
 	</div>
 </template>
 
@@ -44,7 +52,9 @@ export default {
 			currentProgress: 0,
 			countDownInterval: () => {},
 			playing: true,
-			currentStoryIndex: 0
+			currentStoryIndex: 0,
+			prevUser: null,
+			nextUser: null,
 		}
 	},
 	head() {
@@ -58,7 +68,20 @@ export default {
 		this.stories = data.story;
 	},
 	mounted() {
+		// start timer
 		this.countDownStory();
+
+		// load data for prev and next story
+		const data = this.$store.getters.getPrevAndNextStory(this.user.id);
+		const prevUserId = data[0];
+		const nextUserId = data[1];
+		const prevUser = this.$store.getters.getSingleUser(prevUserId)[0];
+		const nextUser = this.$store.getters.getSingleUser(nextUserId)[0];
+		this.prevUser = prevUser;
+		this.nextUser = nextUser;
+	},
+	beforeDestroy() {
+		clearInterval(this.countDownInterval);
 	},
 	methods: {
 		countDownStory() {
@@ -67,7 +90,7 @@ export default {
 					if(this.currentStoryIndex + 1 >= this.stories.images.length) {
 						this.$store.commit("addWatchedStory", Number(this.user.id));
 						clearInterval(this.countDownInterval);
-						this.$router.push("/");
+						this.$router.push(`/stories/${this.nextUser.id}`);
 						return;
 					} 
 					this.currentStoryIndex++;
