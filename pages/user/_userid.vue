@@ -8,10 +8,11 @@
 					<button v-if="currentUser.id == user.id" class="btn btn--light">Edit profile</button>
 					<svg v-if="currentUser.id == user.id"  aria-label="Optionen" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><circle cx="12" cy="12" fill="none" r="8.635" stroke="rgb(38, 38, 38)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle><path d="M14.232 3.656a1.269 1.269 0 01-.796-.66L12.93 2h-1.86l-.505.996a1.269 1.269 0 01-.796.66m-.001 16.688a1.269 1.269 0 01.796.66l.505.996h1.862l.505-.996a1.269 1.269 0 01.796-.66M3.656 9.768a1.269 1.269 0 01-.66.796L2 11.07v1.862l.996.505a1.269 1.269 0 01.66.796m16.688-.001a1.269 1.269 0 01.66-.796L22 12.93v-1.86l-.996-.505a1.269 1.269 0 01-.66-.796M7.678 4.522a1.269 1.269 0 01-1.03.096l-1.06-.348L4.27 5.587l.348 1.062a1.269 1.269 0 01-.096 1.03m11.8 11.799a1.269 1.269 0 011.03-.096l1.06.348 1.318-1.317-.348-1.062a1.269 1.269 0 01.096-1.03m-14.956.001a1.269 1.269 0 01.096 1.03l-.348 1.06 1.317 1.318 1.062-.348a1.269 1.269 0 011.03.096m11.799-11.8a1.269 1.269 0 01-.096-1.03l.348-1.06-1.317-1.318-1.062.348a1.269 1.269 0 01-1.03-.096" fill="none" stroke="rgb(38, 38, 38)" stroke-linejoin="round" stroke-width="2"></path></svg>
 					<button v-if="currentUser.id !== user.id" class="btn btn--light">Message</button>
-					<button v-if="currentUser.id !== user.id && currentUser.follows.includes(user.id)" class="btn btn--light btn--wide" @click="unfollowUser">
+					<button v-if="currentUser.id !== user.id && currentUser.follows.includes(user.id)" class="btn btn--light btn--wide" :class="{'hideContent': fadeAnimation}" @click="unfollowUser">
+						<span class="bold white">i</span>
 						<img src="@/assets/img/stopfollowing1.png" alt="stop following symbol">
 					</button>
-					<button v-if="currentUser.id !== user.id && !currentUser.follows.includes(user.id)" class="btn btn--light btn--wide" @click="followUser">
+					<button v-if="currentUser.id !== user.id && !currentUser.follows.includes(user.id)" class="btn btn--light btn--wide" :class="{'hideContent': fadeAnimation}" @click="followUser">
 						<img src="@/assets/img/startfollowing.png" alt="start following symbol">
 						<span class="bold">Follow</span>
 					</button>
@@ -85,7 +86,8 @@ export default {
 			userid: this.$route.params.userid,
 			user: null,
 			posts: [],
-			navPosition: 0
+			navPosition: 0,
+			fadeAnimation: false
 		}
 	},
 	head() {
@@ -103,9 +105,17 @@ export default {
 			this.navPosition = index;
 		},
 		followUser() {
+			this.fadeAnimation = true;
+			setTimeout(() => {
+				this.fadeAnimation = false;
+			}, 100);
 			this.$store.commit("startFollowing", Number(this.userid));
 		},
 		unfollowUser() {
+			this.fadeAnimation = true;
+			setTimeout(() => {
+				this.fadeAnimation = false;
+			}, 150);
 			this.$store.commit("stopFollowing", Number(this.userid));
 		}
 	}

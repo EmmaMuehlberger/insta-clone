@@ -7,9 +7,10 @@
         &__content {
             width: 490px;
             &__row {
-                display: flex;
+                display: inline-flex;
                 align-items: center;
                 margin-bottom: 25px;
+                width: 100%;
                 &:last-of-type {
                     margin-top: -20px;
                 }
@@ -23,10 +24,17 @@
                     justify-content: center;
                     margin-right: 20px;
                     img {
+                        transition: opacity 300ms ease-in-out;
                         pointer-events: none;
                     }
                     span {
+                        transition: opacity 300ms ease-in-out;
                         margin-left: 5px;
+                    }
+                    &.hideContent {
+                        img, span {
+                            opacity: 0;
+                        }
                     }
                 }
                 p {
