@@ -399,26 +399,18 @@ const getters = {
         const currentStoryIndex = state.currentUser.follows.indexOf(currentStory);
         let prevStory, nextStory;
         // get next story
-        let count = 1;
-        let i = currentStoryIndex < state.currentUser.follows.length - 1 ? currentStoryIndex + 1 : 0;
-        while(count < state.currentUser.follows.length) {
+        for(let i = currentStoryIndex < state.currentUser.follows.length - 1 ? currentStoryIndex + 1 : 0; i !== currentStoryIndex; i = (i+1) % state.currentUser.follows.length) {
             if(state.users[state.currentUser.follows[i]].story.images.length > 0) {
                 nextStory = state.users[state.currentUser.follows[i]];
                 break;
             }
-            i = (i+1) % state.currentUser.follows.length;
-            count++;
         }
         // get previous story
-        count = 0;
-        i = currentStoryIndex > 0 ? currentStoryIndex - 1 : state.currentUser.follows.length - 1;
-        while(count < state.currentUser.follows.length) {
+        for(let i = currentStoryIndex > 0 ? currentStoryIndex - 1 : state.currentUser.follows.length - 1; i !== currentStoryIndex; i = (i-1) % state.currentUser.follows.length) {
             if(state.users[state.currentUser.follows[i]].story.images.length > 0) {
                 prevStory = state.users[state.currentUser.follows[i]];
                 break;
             }
-            count++;
-            i = (i-1) % state.currentUser.follows.length;
         }
         // check prev and next story are not the same
         if(prevStory === nextStory) {
