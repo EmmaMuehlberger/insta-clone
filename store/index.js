@@ -402,10 +402,6 @@ const getters = {
         let count = 1;
         let i = currentStoryIndex < state.currentUser.follows.length - 1 ? currentStoryIndex + 1 : 0;
         while(count < state.currentUser.follows.length) {
-            if(i === currentStoryIndex) {
-                nextStory = null;
-                break;
-            }
             if(state.users[state.currentUser.follows[i]].story.images.length > 0) {
                 nextStory = state.users[state.currentUser.follows[i]];
                 break;
