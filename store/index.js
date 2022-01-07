@@ -494,7 +494,7 @@ const mutations = {
 
     // Comments
     addComment(state, { postId, content }) {
-        state.posts[postId].comments.push({user: state.currentUser.id, comment: content, time: "1m"});
+        state.posts[postId].comments.push({user: state.currentUser.id, comment: content, time: "1min"});
     },
 
     // Stories
