@@ -16,6 +16,7 @@
         border-radius: 10px;
         overflow: hidden;
         margin: 0 100px;
+        opacity: .7;
         &__preview {
             position: absolute;
             top: 50%;
@@ -30,6 +31,11 @@
         .AccountWithNoStory {
             position: relative;
         }
+    }
+    &__placeholder {
+        width: 180px;
+        height: 300px;
+        margin: 0 100px;
     }
     &__container {
         display: flex;

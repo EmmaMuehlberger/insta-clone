@@ -4,6 +4,7 @@
 			<div class="StoryPage__previewContainer__preview" :style="{backgroundImage: `url(${require(`@/assets/img/${prevUser.img}`)})`}"></div>
 			<AccountWithNoStory :img="prevUser.img" :alt="`${prevUser.name}s profile pic`" />
 		</nuxt-link>
+		<div v-else class="StoryPage__placeholder"></div>
 		<div class="StoryPage__container">
 			<div class="StoryPage__container__background" :style="{backgroundImage: `url(${require(`@/assets/img/${stories.images[currentStoryIndex]}`)})`}"></div>
 			<div class="StoryPage__container__header">
@@ -39,6 +40,7 @@
 			<div class="StoryPage__previewContainer__preview" :style="{backgroundImage: `url(${require(`@/assets/img/${nextUser.img}`)})`}"></div>
 			<AccountWithNoStory :img="nextUser.img" :alt="`${nextUser.name}s profile pic`" />
 		</nuxt-link>
+		<div v-else class="StoryPage__placeholder"></div>
 	</div>
 </template>
 
@@ -73,10 +75,8 @@ export default {
 
 		// load data for prev and next story
 		const data = this.$store.getters.getPrevAndNextStory(this.user.id);
-		const prevUserId = data[0];
-		const nextUserId = data[1];
-		const prevUser = this.$store.getters.getSingleUser(prevUserId)[0];
-		const nextUser = this.$store.getters.getSingleUser(nextUserId)[0];
+		const prevUser = data[0];
+		const nextUser = data[1];
 		this.prevUser = prevUser;
 		this.nextUser = nextUser;
 	},
