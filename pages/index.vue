@@ -7,7 +7,7 @@
 				<HomePost v-for="post in posts.slice().reverse()" :key="post.id" :post="post" :user="users.filter(user => user.id.toString() === post.user.toString())[0]" @onPostOptions="togglePostModul" />
 			</div>
 		</div>
-		<PostModul v-if="showPostModul" @onCloseModul="togglePostModul" />
+		<PostModul v-if="showPostModul" :prompt="null" :fields="fields" @onCloseModul="togglePostModul" />
 	</div>
 </template>
 
@@ -19,7 +19,12 @@ export default {
 			posts: [],
 			users: [],
 			showAccountMenu: false,
-			showPostModul: false
+			showPostModul: false,
+			fields: [
+				{content: "Report", bold: true, action: false},
+				{content: "Share in ...", bold: false, action: false},
+				{content: "Copy link", bold: false, action: false}
+			]
 		}
 	},
 	head() {

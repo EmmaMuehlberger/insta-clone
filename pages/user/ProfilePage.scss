@@ -45,6 +45,9 @@
                     object-fit: contain;
                     margin-right: 2px;
                 }
+                svg {
+                    cursor: pointer;
+                }
             }
         }
         .AccountWithStory,

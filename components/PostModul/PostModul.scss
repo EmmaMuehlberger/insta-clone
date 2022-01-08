@@ -13,11 +13,19 @@
         background: #ffffff;
         border-radius: 20px;
         width: 400px;
+        &__header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100px;
+            border-bottom: 1px solid rgba(0, 0, 0, .2);
+        }
         &__item {
             padding: 15px 20px;
             width: 100%;
             border-bottom: 1px solid rgba(0, 0, 0, .2);
             text-transform: capitalize;
+            text-align: center;
             cursor: pointer;
             &:last-of-type {
                 border-bottom: none;
