@@ -90,7 +90,11 @@ export default {
 					if(this.currentStoryIndex + 1 >= this.stories.images.length) {
 						this.$store.commit("addWatchedStory", Number(this.user.id));
 						clearInterval(this.countDownInterval);
-						this.$router.push(`/stories/${this.nextUser.id}`);
+						if(this.nextUser) {
+							this.$router.push(`/stories/${this.nextUser.id}`);
+						} else {
+							this.$router.push("/");
+						}
 						return;
 					} 
 					this.currentStoryIndex++;
