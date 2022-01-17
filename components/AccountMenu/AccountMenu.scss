@@ -17,6 +17,10 @@
         box-shadow: 0 0 5px 1px rgba(0, 0, 0, .0975);
         border-radius: 5px;
         z-index: 101;
+        @media(max-width: 700px) {
+            top: 145px;
+            right: 5px;
+        }
         &__arrow {
             position: absolute;
             top: -7px;

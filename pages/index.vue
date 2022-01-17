@@ -2,7 +2,7 @@
 	<div class="Page" :class="{noScroll: showPostModul}">
 		<div class="Page__main Page__main--home">
 			<StoryList :stories="stories" />
-			<SideBar @onFollow="updatePosts" />
+			<SideBar v-if="!screenWidth || screenWidth > 700" @onFollow="updatePosts" />
 			<div class="PostList">
 				<HomePost v-for="post in posts.slice().reverse()" :key="post.id" :post="post" :user="users.filter(user => user.id.toString() === post.user.toString())[0]" @onPostOptions="togglePostModul" />
 			</div>
@@ -24,7 +24,8 @@ export default {
 				{content: "Report", bold: true, action: false},
 				{content: "Share in ...", bold: false, action: false},
 				{content: "Copy link", bold: false, action: false}
-			]
+			],
+			screenWidth: null
 		}
 	},
 	head() {
@@ -34,6 +35,7 @@ export default {
 	},
 	created() {
 		this.updatePosts();
+		this.getScreenWidth();
 	},
 	methods: {
 		togglePostModul() {
@@ -43,6 +45,11 @@ export default {
 			this.posts = this.$store.getters.getSubscribedPosts;
 			this.users = this.$store.getters.getSubscribedUsers;
 			this.stories = this.$store.getters.getStories;
+		},
+		getScreenWidth() {
+			if(process.browser) {
+				this.screenWidth = window.innerWidth;
+			}
 		}
 	},
 }

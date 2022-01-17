@@ -28,12 +28,20 @@ body {
         min-height: 100vh;
         margin: 0 auto;
         padding-top: 100px;
+        @media(max-width: 700px) {
+            padding-top: 160px;
+            display: block;
+        }
         &--home {
             display: grid;
             grid-template-columns: 2fr 1fr;
             grid-template-rows: 1fr auto;
             grid-template-areas: "stories sidebar" "posts sidebar";
             gap: 20px;
+            @media(max-width: 700px) {
+                padding: 160px 20px 20px;
+                display: block;
+            }
         }
     }
     &__create {
