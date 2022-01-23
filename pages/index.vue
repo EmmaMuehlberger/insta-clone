@@ -35,6 +35,8 @@ export default {
 	},
 	created() {
 		this.updatePosts();
+	},
+	mounted() {
 		this.getScreenWidth();
 	},
 	methods: {
@@ -50,7 +52,6 @@ export default {
 			if(process.browser) {
 				this.screenWidth = window.innerWidth;
 			}
-			console.log(this.screenWidth);
 		}
 	},
 }
