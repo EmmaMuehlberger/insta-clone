@@ -9,6 +9,8 @@
     overflow-x: hidden;
     @media(max-width: 700px) {
         margin-bottom: 20px;
+        border: none;
+        padding: 0 15px;
     }
     &__container {
         margin: 0 3px;
