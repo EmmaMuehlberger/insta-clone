@@ -38,6 +38,7 @@ export default {
 	},
 	mounted() {
 		this.getScreenWidth();
+		window.addEventListener("resize", this.getScreenWidth)
 	},
 	methods: {
 		togglePostModul() {
